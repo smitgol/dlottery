@@ -78,7 +78,7 @@ function LotteryDetail() {
       <div className='pt-48 w-4/5 mx-auto flex flex-col gap-20 mb-20'>
         <div className='flex flex-row gap-20 items-start'>
           <div className='w-auto h-auto hover:scale-105 hover:cursor-pointer transition duration-600'>
-            <Image src={lotteryData.imageUrl} alt="hero image" height="400" width="570" className='rounded-2xl'/>
+            <Image src={lotteryData?.imageUrl} alt="hero image" height="400" width="570" className='rounded-2xl'/>
           </div>
           <div className='flex flex-col gap-8 items-start w-2/5'>
             <p className='text-5xl font-semibold'>{lotteryData.title}</p>

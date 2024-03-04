@@ -10,7 +10,7 @@ export default function Hero() {
     const scrollToLottries = () => {
         const lotteryEle = document.getElementById("lotteries"); 
         window.scrollTo({
-            top:lotteryEle.offsetTop,
+            top:lotteryEle?.offsetTop,
             behavior:"smooth"
         });
     }

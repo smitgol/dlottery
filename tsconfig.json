@@ -22,9 +22,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["@graphprotocol/graph-ts"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/interfaces/*.ts"],
   "exclude": ["node_modules"],
-  "extend":"./node_modules/@graphprotocol/graph-ts/tsconfig.json"
 }

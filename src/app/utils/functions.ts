@@ -7,7 +7,7 @@ export const getEndingDate = (unix_timestamp:bigint) => {
 }
 
 export const getTotalWinningPrice = (winningPrice:any) => {
-    return winningPrice.reduce((a:any, b:any) => {
+    return winningPrice?.reduce((a:any, b:any) => {
         const priceA = parseInt(a.price) || 0;
         const priceB = parseInt(b.price) || 0;
         return priceA + priceB;
