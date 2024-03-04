@@ -18,10 +18,52 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: theme('backgroundColor.dark-bg-color');
+  margin: 0;
+  width: 100%;
+  font-family: THICCCBOI,sans-serif;
+}
+
+:focus {
+  outline: none;
+}
+
+
+.image {
+  display: grid;
+  height: auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 10px 30px -15px rgb(2 12 27 / 70%);
+  margin: 0;
+  bottom: 0;
+  background-color: #4d51e8;
+}
+
+
+.image-tyle {
+  mix-blend-mode: multiply;
+  filter: grayscale(100%) contrast(1) brightness(90%);
+  width: 100%;
+  height: auto;
+}
+
+.badge {
+  @apply inline-flex items-center rounded-md  px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset 
+}
+.bager-primary {
+  @apply bg-blue-50 ring-blue-700/10
+}
+
+.dash-section-title {
+  @apply relative px-3 before:bg-blue-500 before:absolute before:w-0 before:h-0.5 before:left-0 before:bottom-0 before:transition-all before:duration-300 before:ease-out
+}
+
+.dash-section-title-hover {
+  @apply before:hover:w-full
+}
+
+.dash-section-active {
+  @apply border-b-blue-500 border-b-2 px-3
 }
