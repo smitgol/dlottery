@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
 import { getRandomNumberInRange } from '@/app/utils/functions';
 import { images } from '@/lotteryImages';
+import "../../components/datePicker.css";
 
 function CreateLottery() {
   const [winnerPrize, setWinnerPrize] = useState([""]);
@@ -111,7 +112,7 @@ function CreateLottery() {
           </div>
           <div className="flex flex-row gap-16">
             <Input inputType='number' placeholder='minimum participant' label='Minimum Participant*' widthClass='!w-1/3' value={minParticipant} onChange={(e) => setMinParticipant(e.target.value)}/>
-            <Input inputType='date' placeholder='contest end date' label='Contest end date*' widthClass='!w-1/3' value={contestEndDate} onChange={(e) => setContestEndDate(e.target.value)}/>
+            <Input inputType='date' placeholder='contest end date' label='Contest end date*' widthClass='!w-1/3' value={contestEndDate} onChange={(e) => setContestEndDate(e.target.value)} className='picker'/>
           </div>
           <div className="flex flex-col gap-4">
             <div className='text-base'>Winners Prize(in wei)*</div>
