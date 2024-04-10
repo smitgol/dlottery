@@ -10,18 +10,19 @@ import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getEndingDate } from '@/app/utils/functions';
 
-function LotteryDetail() {
+function LotteryDetail({id}:{id:string}) {
   const [lotteryData, setLotteryData] = useState<any>();
   const [lotterySum, setLotterySum] = useState(0);
   const {web3, walletAddress, web3RPC} = useWalletContext();
   useEffect(() => {
-    getLotteryData();
-    
-  },[]);
+    if (web3RPC) {
+      getLotteryData();
+    }
+  },[web3RPC]);
 
   const getLotteryData = async() => {
     const contract = new web3RPC!.eth.Contract(abi, process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
-    const result = await contract.methods.getLotteryWinnerPrice(1).call();
+    const result = await contract.methods.getLotteryWinnerPrice(id).call();
     setLotteryData(result);
     let sum = 0;
     result.winnerPrices.map((item) => {
@@ -36,7 +37,6 @@ function LotteryDetail() {
       const contract = new web3!.eth.Contract(abi, process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
       try {
         await contract.methods.participate(0, walletAddress).send({from: walletAddress, value: web3?.utils.toWei(Number(lotteryData.participateFee), "wei")}).then((result) => {
-          console.log(result);
           if (result) {
             toast.success("you're in", {
               position: "bottom-right",
@@ -78,7 +78,7 @@ function LotteryDetail() {
       <div className='pt-48 w-4/5 mx-auto flex flex-col gap-20 mb-20'>
         <div className='flex flex-row gap-20 items-start'>
           <div className='w-auto h-auto hover:scale-105 hover:cursor-pointer transition duration-600'>
-            <Image src={lotteryData?.imageUrl} alt="hero image" height="400" width="570" className='rounded-2xl'/>
+            <Image src={lotteryData?.imageUrl} alt="hero image" height="300" width="570" className='rounded-2xl'/>
           </div>
           <div className='flex flex-col gap-8 items-start w-2/5'>
             <p className='text-5xl font-semibold'>{lotteryData.title}</p>
