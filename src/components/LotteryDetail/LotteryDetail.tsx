@@ -37,7 +37,6 @@ function LotteryDetail({id}:{id:string | string[] | undefined}) {
       const contract = new web3!.eth.Contract(abi, process.env.NEXT_PUBLIC_CONTRACT_ADDRESS);
       try {
         await contract.methods.participate(0, walletAddress).send({from: walletAddress, value: web3?.utils.toWei(Number(lotteryData.participateFee), "wei")}).then((result) => {
-          console.log(result);
           if (result) {
             toast.success("you're in", {
               position: "bottom-right",
