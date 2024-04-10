@@ -10,7 +10,7 @@ import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getEndingDate } from '@/app/utils/functions';
 
-function LotteryDetail({id}:{id:string | string[] | undefined}) {
+function LotteryDetail({id}:{id:string}) {
   const [lotteryData, setLotteryData] = useState<any>();
   const [lotterySum, setLotterySum] = useState(0);
   const {web3, walletAddress, web3RPC} = useWalletContext();
