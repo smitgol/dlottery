@@ -3,6 +3,8 @@ import Image from "next/image"
 import heroImage from "../../images/hero_image.jpg";
 import Button from "../Button";
 import { useRouter } from 'next/navigation'
+import Lottie from 'react-lottie';
+import animationData from '../../lottie/blockchian_animation.json';
 
 export default function Hero() {
     const router = useRouter();
@@ -17,6 +19,14 @@ export default function Hero() {
     const navigateToCreateLottery = () => {
         router.push('/create-lottery');
     }
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+          preserveAspectRatio: "xMidYMid slice",
+        },
+    };
     return (
         <div className="pt-56 max-sm:pt-36 mx-auto w-4/5">
             <div className="flex flex-row space-between align-items-center max-sm:flex-col-reverse max-sm:gap-16 md:gap-5 max-sm:text-center">
@@ -29,9 +39,11 @@ export default function Hero() {
                     </div>
                 </div>
                 <div className="w-1/2 max-sm:w-full">
-                    <div className="image">
-                        <Image src={heroImage} alt="hero image" sizes="100vw" className="image-tyle"/>
-                    </div>
+                    <Lottie 
+                        options={defaultOptions}
+                        height={400}
+                        width={400}
+                    />
                 </div>
             </div>
         </div>
